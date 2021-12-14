@@ -5,20 +5,31 @@ using UnityEngine.UI;
 using System;
 public class PlayerWeapon : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
     [SerializeField] private Transform weaponParent;
 
-    public event Action<int> EquipWeaponHandler;
-    public event Action DropWeaponHandler;
+    [SerializeField] private WeaponDisplayPanel display;
 
     private Gun gun;
+
     private void Start()
     {
-        InputSystem.instance.attackButton.onClick.AddListener(Attack);
+        display.longClickHandler.handler += DropWeapon;
     }
-
+    private void OnDestroy()
+    {
+        display.longClickHandler.handler -= DropWeapon;
+    }
+    private void Update()
+    {
+        if (InputSystem.instance.IsHoldAttack)
+        {
+            if (gun != null)
+                Attack();
+        }
+    }
     private void Attack()
     {
-        if (gun == null) return;
         gun.Fire();
     }
     public void PickUpWeapon(Collider2D coll) 
@@ -31,21 +42,35 @@ public class PlayerWeapon : MonoBehaviour
     }
     private void EquipWeapon(Gun gun)
     {
+        anim.SetBool("isEquip", true);
+
         this.gun = gun;
         gun.transform.SetParent(weaponParent);
         gun.transform.localPosition = Vector3.zero;
         gun.transform.localRotation = Quaternion.identity;
         gun.transform.localScale = Vector3.one;
 
-        EquipWeaponHandler?.Invoke((int)gun.GunType);
+        gun.SetOnHand();
+
+        gun.bulletUpdateHandler += display.UpdateAmmo;
+        display.ShowGun((int)gun.Type);
     }
     public void DropWeapon()
     {
         if (gun == null) return;
-        gun.transform.SetParent(null);
-        gun = null;
 
-        DropWeaponHandler?.Invoke();
+        anim.SetBool("isEquip", false);
+
+        gun.SetOnGround();
+
+        gun.transform.SetParent(null);
+
+
+        display.UnShowGun();
+        gun.bulletUpdateHandler -= display.UpdateAmmo;
+
+        gun = null;
     }
+    
 
 }

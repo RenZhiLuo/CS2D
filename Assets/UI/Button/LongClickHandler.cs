@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class LongClickHandler : MonoBehaviour, IPointerDownHandler , IPointerUpHandler
@@ -9,7 +9,7 @@ public class LongClickHandler : MonoBehaviour, IPointerDownHandler , IPointerUpH
     [SerializeField] private Image fillImg;
 
     [SerializeField] private float triggerTime;
-    [SerializeField] private UnityEvent handler;
+    [HideInInspector] public Action handler;
 
 
     private Coroutine prog;

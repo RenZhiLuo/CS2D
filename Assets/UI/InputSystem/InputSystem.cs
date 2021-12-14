@@ -6,7 +6,9 @@ public class InputSystem : MonoBehaviour
 {
     public static InputSystem instance;
     [SerializeField] private WoXing.Joystick joystickMove;
-    public Button attackButton;
+    [SerializeField] private HoldButton attackButton;
+
+    public Button pickUpButton;
 
 #if UNITY_EDITOR
     public float Horizontal { get { return Input.GetAxis("Horizontal"); } }
@@ -17,14 +19,9 @@ public class InputSystem : MonoBehaviour
     public float Vertical { get { return joystickMove.Vertical; } }
 #endif
 
-    public float AttackHorizontal { get { return joystickMove.Horizontal; } }
-    public float AttackVertical { get { return joystickMove.Vertical; } }
+    public bool IsHoldAttack { get { return attackButton.IsHoldDown; } }
     private void Awake()
     {
         instance = this;
-    }
-    private void OnDestroy()
-    {
-        instance = null;
     }
 }

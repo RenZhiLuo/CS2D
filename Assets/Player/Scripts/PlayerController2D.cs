@@ -61,16 +61,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void AnimationSwitch()
     {
-        if (InputHorizontal != 0)
-        {
-            anim.SetFloat("InputX", InputHorizontal);
-
-        }
-        if (InputVertical != 0)
-        {
-            anim.SetFloat("InputY", InputVertical);
-        }
-
+        anim.SetBool("isWalking", InputHorizontal != 0 || InputVertical != 0);
     }
 
     private void OnDestroy()

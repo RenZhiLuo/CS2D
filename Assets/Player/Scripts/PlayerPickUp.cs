@@ -9,15 +9,17 @@ public class PlayerPickUp : MonoBehaviour
     [SerializeField] private float distance = 4;
 
     [SerializeField] private LayerMask layer;
-    [SerializeField] private string tagName;
-
 
     [SerializeField] private UnityEvent<Collider2D> PickUpHandler;
+
     private void Start()
     {
-        InputSystem.instance.attackButton.onClick.AddListener(CheckPickUpByOverlap);
+        InputSystem.instance.pickUpButton.onClick.AddListener(CheckPickUpByOverlap);
     }
-
+    private void OnDestroy()
+    {
+        InputSystem.instance.pickUpButton.onClick.RemoveListener(CheckPickUpByOverlap);
+    }
     private void CheckPickUpByRaycast()
     {
         if (Physics.SphereCast(Camera.main.transform.position, radius, Camera.main.transform.forward, out RaycastHit hit, distance, layer))
