@@ -56,14 +56,17 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Background\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerController2D.cs" />
     <Compile Include="Assets\UI\InputSystem\ProJoystick\Scripts\Joystick.cs" />
     <Compile Include="Assets\GameSettingPanel\Scripts\ToggleSwitch.cs" />
     <Compile Include="Assets\UI\InputSystem\ProJoystick\Scripts\ProJoystick.cs" />
     <Compile Include="Assets\UI\Button\HoldButton.cs" />
+    <Compile Include="Assets\Background\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerPickUp.cs" />
     <Compile Include="Assets\Enemy\Health.cs" />
     <Compile Include="Assets\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Background\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
     <Compile Include="Assets\UI\HealthBar\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Enemy\Furry\Scripts\FurryEnemy.cs" />
     <Compile Include="Assets\GameSettingPanel\Scripts\GameSettingPanel.cs" />
@@ -76,13 +79,10 @@
     <Compile Include="Assets\Enemy\EnemyGenerator.cs" />
     <Compile Include="Assets\Weapon\Scripts\Gun.cs" />
     <Compile Include="Assets\UI\InputSystem\InputSystem.cs" />
-    <Compile Include="Assets\Player\Scripts\PlayerWeapon.cs" />
-    <Compile Include="Assets\UI\WeaponDisplay\Scripts\WeaponDisplayPanel.cs" />
-    <Compile Include="Assets\Background\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
-    <Compile Include="Assets\Background\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
     <Compile Include="Assets\Background\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
+    <Compile Include="Assets\Player\Scripts\PlayerWeapon.cs" />
     <Compile Include="Assets\Background\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
-    <Compile Include="Assets\Background\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
+    <Compile Include="Assets\UI\WeaponDisplay\Scripts\WeaponDisplayPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
