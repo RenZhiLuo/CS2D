@@ -113,6 +113,7 @@ public class Gun : MonoBehaviour
         if (!CanFire()) return;
 
         SoundManager.instance.PlayAttack();
+        muzzleFlash.Emit(1);
         Bullet bullet = new Bullet();
 
         GameObject prefab = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);

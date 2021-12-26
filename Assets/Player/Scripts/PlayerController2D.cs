@@ -8,14 +8,14 @@ public class PlayerController2D : MonoBehaviour
 
     [SerializeField] private Animator anim;
 
+    [SerializeField] private Rigidbody2D rb;
+
     [SerializeField] private float moveSpeed;
     private float InputHorizontal { get { return InputSystem.instance.Horizontal; } }
     private float InputVertical { get { return InputSystem.instance.Vertical; } }
     private bool InputRun { get { return Input.GetKey(KeyCode.Z); } }
     private bool InputJump { get { return Input.GetKeyDown(KeyCode.Space); } }
 
-    private bool isFacingRight;
-    public bool IsFacingRight { get { return isFacingRight; } }
 
     #region Sound
     [SerializeField] private float footstepInterval;
@@ -28,24 +28,14 @@ public class PlayerController2D : MonoBehaviour
     }
     private void Update()
     {
-        if (InputHorizontal > 0)
-        {
-            isFacingRight = true;
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (InputHorizontal < 0)
-        {
-            isFacingRight = false;
-            transform.localScale = new Vector3(1, 1, 1);
-        }
 
         Vector2 velocity = new Vector2(InputHorizontal, InputVertical) * moveSpeed * Time.deltaTime;
-        transform.position += (Vector3)velocity;
+        rb.position += velocity;
 
         //footstep sound
         if (velocity != Vector2.zero)
         {
-            transform.up = velocity;
+            transform.up = velocity.normalized;
             footstepIntervalTimer += Time.deltaTime;
             if (footstepIntervalTimer >= footstepInterval)
             {
