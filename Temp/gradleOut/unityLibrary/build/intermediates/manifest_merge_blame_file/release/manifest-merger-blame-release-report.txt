@@ -89,7 +89,7 @@
 50-->D:\UnityApp\CS2D\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:15:5-101
 51            android:name="unity.build-id"
 51-->D:\UnityApp\CS2D\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:15:16-45
-52            android:value="db439e0f-b192-41e4-a8d6-0792f7c44546" />
+52            android:value="21c51758-7262-4a4b-90f6-69e7eab01ffd" />
 52-->D:\UnityApp\CS2D\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:15:46-98
 53    </application>
 54

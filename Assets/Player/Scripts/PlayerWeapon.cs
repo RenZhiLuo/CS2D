@@ -8,41 +8,49 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private Transform weaponParent;
 
-    [SerializeField] private WeaponDisplayPanel display;
+    [SerializeField] private WeaponDisplayPanel weaponDisplay;
+
+    [SerializeField] private int equipParam = Animator.StringToHash("isEquipping");
+    [SerializeField] private int reloadParam = Animator.StringToHash("reload");
 
     private Gun gun;
 
     private void Start()
     {
-        display.longClickHandler.handler += DropWeapon;
+        weaponDisplay.longClickHandler.handler += DropWeapon;
+        InputSystem.instance.reloadButton.onClick.AddListener(Reload);
     }
     private void OnDestroy()
     {
-        display.longClickHandler.handler -= DropWeapon;
+        weaponDisplay.longClickHandler.handler -= DropWeapon;
     }
     private void Update()
     {
         if (InputSystem.instance.IsHoldAttack)
         {
-            if (gun != null)
-                Attack();
+            Attack();
         }
     }
     private void Attack()
     {
-        gun.Fire();
+        if (gun == null) return;
+        gun.Shoot();
     }
-    public void PickUpWeapon(Collider2D coll) 
+    private void Reload()
     {
-        if (this.gun) return;
-        if (coll.TryGetComponent<Gun>(out Gun gun))
-        {
-            EquipWeapon(gun);
-        }
+        if (gun == null) return;
+        bool canReload =  gun.Reload();
+        if (canReload) anim.SetTrigger("reload");
+    }
+    public void PickUpWeapon(Gun gun) 
+    {
+        if (this.gun) DropWeapon();
+
+        EquipWeapon(gun);
     }
     private void EquipWeapon(Gun gun)
     {
-        anim.SetBool("isEquip", true);
+        anim.SetBool(equipParam, true);
 
         this.gun = gun;
         gun.transform.SetParent(weaponParent);
@@ -50,24 +58,24 @@ public class PlayerWeapon : MonoBehaviour
         gun.transform.localRotation = Quaternion.identity;
         gun.transform.localScale = Vector3.one;
 
-        gun.SetOnHand();
+        gun.bulletUpdateHandler += weaponDisplay.UpdateAmmo;
+        weaponDisplay.ShowGun(gun.Type);
 
-        gun.bulletUpdateHandler += display.UpdateAmmo;
-        display.ShowGun((int)gun.Type);
+        gun.SetOnHand();
     }
     public void DropWeapon()
     {
         if (gun == null) return;
 
-        anim.SetBool("isEquip", false);
+        anim.SetBool(equipParam, false);
 
         gun.SetOnGround();
 
         gun.transform.SetParent(null);
+        gun.transform.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360));
 
-
-        display.UnShowGun();
-        gun.bulletUpdateHandler -= display.UpdateAmmo;
+        weaponDisplay.UnShowGun();
+        gun.bulletUpdateHandler -= weaponDisplay.UpdateAmmo;
 
         gun = null;
     }

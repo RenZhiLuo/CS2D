@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class PlayerController2D : MonoBehaviour
 {
@@ -16,8 +17,9 @@ public class PlayerController2D : MonoBehaviour
     private bool InputRun { get { return Input.GetKey(KeyCode.Z); } }
     private bool InputJump { get { return Input.GetKeyDown(KeyCode.Space); } }
 
-
+    private int walkParam = Animator.StringToHash("isWalking");
     #region Sound
+    [SerializeField] private Sound footstepSound;
     [SerializeField] private float footstepInterval;
     private float footstepIntervalTimer;
     #endregion
@@ -26,10 +28,12 @@ public class PlayerController2D : MonoBehaviour
     {
         instance = this;
     }
+
+
     private void Update()
     {
 
-        Vector2 velocity = new Vector2(InputHorizontal, InputVertical) * moveSpeed * Time.deltaTime;
+        Vector2 velocity = new Vector2(InputHorizontal, InputVertical).normalized * moveSpeed * Time.deltaTime;
         rb.position += velocity;
 
         //footstep sound
@@ -40,7 +44,7 @@ public class PlayerController2D : MonoBehaviour
             if (footstepIntervalTimer >= footstepInterval)
             {
                 footstepIntervalTimer = 0;
-                SoundManager.instance.PlayAudio(ClipType.Footstep);
+                SoundManager.instance.PlayAudio(footstepSound);
             }
         }
     }
@@ -51,7 +55,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void AnimationSwitch()
     {
-        anim.SetBool("isWalking", InputHorizontal != 0 || InputVertical != 0);
+        anim.SetBool(walkParam, InputHorizontal != 0 || InputVertical != 0);
     }
 
     private void OnDestroy()

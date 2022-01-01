@@ -7,6 +7,6 @@ public class PlayerHealth : Health
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        SoundManager.instance.PlayAudio(ClipType.PlayerHurt);
+        SoundManager.instance.PlayAudio(hurtSound);
     }
 }

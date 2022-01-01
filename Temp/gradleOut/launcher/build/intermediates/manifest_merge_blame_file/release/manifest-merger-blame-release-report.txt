@@ -111,7 +111,7 @@
 62-->[:unityLibrary] D:\UnityApp\CS2D\Temp\gradleOut\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:50:9-52:68
 63            android:name="unity.build-id"
 63-->[:unityLibrary] D:\UnityApp\CS2D\Temp\gradleOut\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:51:13-42
-64            android:value="db439e0f-b192-41e4-a8d6-0792f7c44546" />
+64            android:value="21c51758-7262-4a4b-90f6-69e7eab01ffd" />
 64-->[:unityLibrary] D:\UnityApp\CS2D\Temp\gradleOut\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:52:13-65
 65    </application>
 66

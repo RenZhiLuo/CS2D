@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -19,15 +20,15 @@ TagManager:
   - 
   - 
   - 
+  - Hittable
   - 
   - 
   - 
   - 
   - 
+  - Pickable
   - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
+  - 
   - 
   - 
   - 

@@ -7,11 +7,11 @@ public class AnimatedTexture : MonoBehaviour
     public Texture2D[] frames;
 
     private int frameIndex;
-    private MeshRenderer rendererMy;
+    [SerializeField] private MeshRenderer rendererMy;
 
     void Start()
     {
-        rendererMy = GetComponent<MeshRenderer>();
+
         NextFrame();
         InvokeRepeating("NextFrame", 1 / fps, 1 / fps);
     }

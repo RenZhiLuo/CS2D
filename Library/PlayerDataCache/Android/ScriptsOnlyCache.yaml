@@ -1,8 +1,9 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - EnemyGenerator
-    - FurryEnemy
+    - AIMovement
+    - Enemy
+    - EnemyRespawnController
     - GameSettingPanel
     - Gun
     - Health
@@ -16,6 +17,7 @@ ScriptsOnlyBuild:
     - PlayerWeapon
     - ProJoystick
     - ProSlider
+    - RouletteController
     - SoundManager
     - TabControlPanel
     - ToggleSwitch
@@ -25,6 +27,9 @@ ScriptsOnlyBuild:
     - Cinemachine.CinemachineFramingTransposer
     - Cinemachine.CinemachinePipeline
     - Cinemachine.CinemachineVirtualCamera
+    NavMeshComponents.dll:
+    - UnityEngine.AI.NavMeshModifier
+    - UnityEngine.AI.NavMeshSurface2d
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Animation.Runtime.dll:
@@ -36,6 +41,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -57,8 +63,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -66,6 +74,7 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
@@ -109,6 +118,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
+    - Class: 96
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -120,82 +131,94 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1494}
     - Class: 114
-      Script: {instanceID: 1626}
+      Script: {instanceID: 1602}
     - Class: 114
-      Script: {instanceID: 1722}
+      Script: {instanceID: 1628}
     - Class: 114
-      Script: {instanceID: 1770}
+      Script: {instanceID: 1724}
     - Class: 114
-      Script: {instanceID: 1890}
+      Script: {instanceID: 1774}
     - Class: 114
-      Script: {instanceID: 2126}
+      Script: {instanceID: 1894}
     - Class: 114
-      Script: {instanceID: 2268}
+      Script: {instanceID: 2134}
     - Class: 114
-      Script: {instanceID: 2288}
+      Script: {instanceID: 2252}
     - Class: 114
-      Script: {instanceID: 2430}
+      Script: {instanceID: 2284}
     - Class: 114
-      Script: {instanceID: 2688}
+      Script: {instanceID: 2304}
     - Class: 114
-      Script: {instanceID: 2744}
+      Script: {instanceID: 2446}
     - Class: 114
-      Script: {instanceID: 2830}
+      Script: {instanceID: 2706}
     - Class: 114
-      Script: {instanceID: 2928}
+      Script: {instanceID: 2762}
     - Class: 114
-      Script: {instanceID: 2978}
+      Script: {instanceID: 2848}
     - Class: 114
-      Script: {instanceID: 3000}
+      Script: {instanceID: 2946}
+    - Class: 114
+      Script: {instanceID: 2996}
     - Class: 114
       Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 3160}
+      Script: {instanceID: 3036}
     - Class: 114
-      Script: {instanceID: 3202}
+      Script: {instanceID: 3180}
     - Class: 114
-      Script: {instanceID: 3422}
+      Script: {instanceID: 3222}
     - Class: 114
-      Script: {instanceID: 3524}
+      Script: {instanceID: 3308}
+    - Class: 114
+      Script: {instanceID: 3444}
+    - Class: 114
+      Script: {instanceID: 3488}
     - Class: 114
       Script: {instanceID: 3548}
     - Class: 114
-      Script: {instanceID: 3736}
+      Script: {instanceID: 3562}
     - Class: 114
-      Script: {instanceID: 3980}
+      Script: {instanceID: 3574}
     - Class: 114
-      Script: {instanceID: 4092}
+      Script: {instanceID: 3762}
     - Class: 114
-      Script: {instanceID: 4422}
+      Script: {instanceID: 4120}
     - Class: 114
-      Script: {instanceID: 4656}
+      Script: {instanceID: 4344}
     - Class: 114
-      Script: {instanceID: 4666}
+      Script: {instanceID: 4452}
     - Class: 114
-      Script: {instanceID: 4714}
+      Script: {instanceID: 4688}
     - Class: 114
-      Script: {instanceID: 4822}
+      Script: {instanceID: 4698}
     - Class: 114
-      Script: {instanceID: 4860}
+      Script: {instanceID: 4746}
     - Class: 114
-      Script: {instanceID: 4972}
+      Script: {instanceID: 4856}
     - Class: 114
-      Script: {instanceID: 5376}
+      Script: {instanceID: 4894}
     - Class: 114
-      Script: {instanceID: 5420}
+      Script: {instanceID: 5006}
     - Class: 114
-      Script: {instanceID: 5440}
+      Script: {instanceID: 5410}
     - Class: 114
-      Script: {instanceID: 5446}
+      Script: {instanceID: 5454}
     - Class: 114
-      Script: {instanceID: 5854}
+      Script: {instanceID: 5474}
     - Class: 114
-      Script: {instanceID: 5864}
+      Script: {instanceID: 5480}
+    - Class: 114
+      Script: {instanceID: 5888}
+    - Class: 114
+      Script: {instanceID: 5898}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 195
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
@@ -212,6 +235,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 238
       Script: {instanceID: 0}
     - Class: 19719996
       Script: {instanceID: 0}
@@ -272,6 +297,12 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: 62debc0430cd11393be4838f33d74498
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AIMovement
+  - hash:
+      serializedVersion: 2
       Hash: 71b711096c6c32621c1d4c02310898b7
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
@@ -308,7 +339,7 @@ ScriptsOnlyBuild:
     className: LayoutElement
   - hash:
       serializedVersion: 2
-      Hash: 94894015c9ae0ff896d5c022fc21c7f7
+      Hash: 89642f14ecb1782030a92226427cbee2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController2D
@@ -368,6 +399,12 @@ ScriptsOnlyBuild:
     className: CinemachineCameraOffset
   - hash:
       serializedVersion: 2
+      Hash: 7299a528424874bcf6b5736b5305ac37
+    assemblyName: NavMeshComponents.dll
+    namespaceName: UnityEngine.AI
+    className: NavMeshModifierVolume
+  - hash:
+      serializedVersion: 2
       Hash: 3521aea2ac621a329a8b7e67f0aa1fcd
     assemblyName: Assembly-CSharp.dll
     namespaceName: WoXing
@@ -386,6 +423,12 @@ ScriptsOnlyBuild:
     className: ToggleSwitch
   - hash:
       serializedVersion: 2
+      Hash: 8d4458b476a9a4dd8df843a849fcfffa
+    assemblyName: NavMeshComponents.dll
+    namespaceName: UnityEngine.AI
+    className: NavMeshSurface
+  - hash:
+      serializedVersion: 2
       Hash: 15882a52798c275361cd0a3ada984ec5
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
@@ -402,6 +445,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
+  - hash:
+      serializedVersion: 2
+      Hash: a2eee164a6cbec8994594da9d7724f0c
+    assemblyName: NavMeshComponents.dll
+    namespaceName: UnityEngine.AI
+    className: NavMeshSurface2d
   - hash:
       serializedVersion: 2
       Hash: 3521aea2ac621a329a8b7e67f0aa1fcd
@@ -578,7 +627,7 @@ ScriptsOnlyBuild:
     className: PropsAltar
   - hash:
       serializedVersion: 2
-      Hash: 921f212d63be3ded78457374ede4b429
+      Hash: 79c292741664f82594d66a768edbe73f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerPickUp
@@ -620,7 +669,7 @@ ScriptsOnlyBuild:
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
-      Hash: 89d0247a959342ef8f7c24315b11a5e4
+      Hash: 580458ed015590d2862ac840ba535f3e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Health
@@ -662,7 +711,7 @@ ScriptsOnlyBuild:
     className: CinemachineInputProvider
   - hash:
       serializedVersion: 2
-      Hash: d40122c321841ddae782e2758ce0f7d6
+      Hash: fe9602e1b9c3ad316198eeca9c6e0b01
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy
@@ -716,6 +765,12 @@ ScriptsOnlyBuild:
     className: SpawnInCircle
   - hash:
       serializedVersion: 2
+      Hash: 2b19be13f00df62e6d4d4f5539bcad51
+    assemblyName: NavMeshComponents.dll
+    namespaceName: UnityEngine.AI
+    className: NavMeshModifier
+  - hash:
+      serializedVersion: 2
       Hash: 23066ceca838af0cf02e00e3cf5155c1
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
@@ -738,6 +793,12 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineMixingCamera
+  - hash:
+      serializedVersion: 2
+      Hash: 049c14e1fc9634257bcd4812e1ebb81e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RouletteController
   - hash:
       serializedVersion: 2
       Hash: a66794b62dbf044668a5f102bb7908c2
@@ -812,7 +873,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 639573dc14f6ab2f2863fce870a261ad
+      Hash: c8d7fd5e38fa6e7c53f5156f588317f7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FurryEnemy
@@ -980,13 +1041,13 @@ ScriptsOnlyBuild:
     className: SoundManager
   - hash:
       serializedVersion: 2
-      Hash: aa794ff5df05ded73a900686762e5b4e
+      Hash: 3436323766879eaca152bbb87a7f97ae
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AnimatedTexture
   - hash:
       serializedVersion: 2
-      Hash: 89d0247a959342ef8f7c24315b11a5e4
+      Hash: 580458ed015590d2862ac840ba535f3e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerHealth
@@ -1166,10 +1227,10 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: 74351dd0cc06b2aa454e6c12a022c6c9
+      Hash: 6457d0677434f2e3a91d3a5ff919c73b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: EnemyGenerator
+    className: EnemyRespawnController
   - hash:
       serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
@@ -1178,13 +1239,13 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 21ea1e0dcca26731d242d7b4cbdcc5d1
+      Hash: 99a5b773f41a33e70ee2946efd9a89d1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Gun
   - hash:
       serializedVersion: 2
-      Hash: 228e5e831c0f9b1081874ffcffd8024e
+      Hash: e4368df371ca829f65851d9f3eba340b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InputSystem
@@ -1256,7 +1317,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: 4d6dce0cd21e5db5eadb382e60399406
+      Hash: 71c71e6f0506909a56d9ea15cb5b90e8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerWeapon
@@ -1280,7 +1341,7 @@ ScriptsOnlyBuild:
     className: CameraFollow
   - hash:
       serializedVersion: 2
-      Hash: 0fe1ed3872ec7133c78bbb0e05bed120
+      Hash: 51fe7dd9b7462034d98f6d7cbd5428ad
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WeaponDisplayPanel
@@ -1332,6 +1393,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.IK.Runtime.dll
     namespaceName: UnityEngine.U2D.IK
     className: FabrikSolver2D
+  - hash:
+      serializedVersion: 2
+      Hash: c8c672fee8a258266e51b55a210b8083
+    assemblyName: NavMeshComponents.dll
+    namespaceName: UnityEngine.AI
+    className: NavMeshLink
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

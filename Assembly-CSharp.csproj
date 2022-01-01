@@ -76,6 +76,7 @@
     <Compile Include="Assets\Enemy\Enemy.cs" />
     <Compile Include="Assets\Downloads\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.6.11\Cinemachine Example Scenes\Shared\Scripts\SpawnInCircle.cs" />
+    <Compile Include="Assets\Roulette\Scripts\RouletteController.cs" />
     <Compile Include="Assets\UI\HealthBar\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.6.11\Cinemachine Example Scenes\Shared\Scripts\PlayerMoveOnSphere.cs" />
     <Compile Include="Assets\Enemy\Furry\Scripts\FurryEnemy.cs" />
@@ -92,8 +93,8 @@
     <Compile Include="Assets\UI\Button\LongClickHandler.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.6.11\Cinemachine Example Scenes\Shared\Scripts\ActivateCamOnPlay.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.6.11\Cinemachine Example Scenes\Scenes\DualTarget\PointAtAimTarget.cs" />
-    <Compile Include="Assets\Enemy\EnemyGenerator.cs" />
-    <Compile Include="Assets\Weapon\Scripts\Gun.cs" />
+    <Compile Include="Assets\Enemy\EnemyRespawnController.cs" />
+    <Compile Include="Assets\Weapon\Gun.cs" />
     <Compile Include="Assets\UI\InputSystem\InputSystem.cs" />
     <Compile Include="Assets\Downloads\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.6.11\Cinemachine Example Scenes\Scenes\Anywhere Door\PlayerMovement.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Assets\UI\WeaponDisplay\Scripts\WeaponDisplayPanel.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.6.11\Cinemachine Example Scenes\Shared\Scripts\ActivateCameraWithDistance.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.6.11\Cinemachine Example Scenes\Scenes\Anywhere Door\TagChanger.cs" />
+    <Compile Include="Assets\Enemy\AIMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -796,6 +798,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{C99F266D-BF19-CD16-BD31-3BF65F028C02}</Project>
+      <Name>NavMeshComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{9D52649A-2713-B5D2-E5C7-9449CE38FC37}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

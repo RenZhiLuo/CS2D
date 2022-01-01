@@ -10,7 +10,7 @@ public class PlayerPickUp : MonoBehaviour
 
     [SerializeField] private LayerMask layer;
 
-    [SerializeField] private UnityEvent<Collider2D> PickUpHandler;
+    [SerializeField] private PlayerWeapon playerWeapon;
 
     private void Start()
     {
@@ -20,20 +20,18 @@ public class PlayerPickUp : MonoBehaviour
     {
         InputSystem.instance.pickUpButton.onClick.RemoveListener(CheckPickUpByOverlap);
     }
-    private void CheckPickUpByRaycast()
-    {
-        if (Physics.SphereCast(Camera.main.transform.position, radius, Camera.main.transform.forward, out RaycastHit hit, distance, layer))
-        {
-            Debug.Log("CheckPickUpByRaycast");
-        }
-    }
+  
     private void CheckPickUpByOverlap()
     {
         Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, radius, layer);
         if (colls.Length > 0)
         {
-            Debug.Log("CheckPickUpByOverlap");
-            PickUpHandler?.Invoke(colls[0]);
+            
+            if(colls[0].CompareTag("Gun") && colls[0].TryGetComponent<Gun>(out Gun gun))
+            {
+                Debug.Log("Pick up gun");
+                playerWeapon.PickUpWeapon(gun);
+            }
         }
     }
     private void OnDrawGizmos()

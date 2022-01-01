@@ -6,9 +6,14 @@ using System;
 public enum ClipType
 {
     Footstep,
-    Shoot,
     PlayerHurt,
     EnemyHurt,
+}
+[Serializable]
+public class Sound
+{
+    public AudioClip clip;
+    public float volume = 1;
 }
 public class SoundManager : MonoBehaviour
 {
@@ -27,18 +32,19 @@ public class SoundManager : MonoBehaviour
     }
     private void Start()
     {
-        GameSettingPanel.instance.volumeSlide.onValueChanged.AddListener((value) => { audioSource.volume = value;audioSource2.volume = value; });
+        GameSettingPanel.instance.volumeSlide.onValueChanged.AddListener((value) => { audioSource.volume = value; audioSource2.volume = value; });
         audioSource.volume = GameSettingPanel.instance.volumeSlide.value;
         audioSource2.volume = GameSettingPanel.instance.volumeSlide.value;
     }
 
-    public void PlayAudio(ClipType index)
+    public void PlayAudio(Sound sound)
     {
-        audioSource.PlayOneShot(audioClips[(int)index]);
+        audioSource.PlayOneShot(sound.clip, sound.volume);
     }
-    public void PlayAttack()
+
+    public void PlayOneShot(Sound sound)
     {
-        audioSource2.PlayOneShot(audioClips[1]);
+        audioSource2.PlayOneShot(sound.clip, sound.volume);
     }
 
 }
